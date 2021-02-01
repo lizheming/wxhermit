@@ -1,0 +1,22 @@
+{
+  "name": "wechat.75.team",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizheming/wechat.75.team.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lizheming/wechat.75.team/issues"
+  },
+  "homepage": "https://github.com/lizheming/wechat.75.team#readme",
+  "dependencies": {
+    "koa": "^2.13.1"
+  }
+}
