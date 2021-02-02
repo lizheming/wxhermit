@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "dotenv": "8.2.0",
-    "eslint": "4.19.1",
+    "eslint": "7.19.0",
     "eslint-config-think": "1.0.3",
     "think-watcher": "3.0.4"
   },
