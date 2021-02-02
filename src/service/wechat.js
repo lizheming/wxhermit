@@ -61,7 +61,7 @@ module.exports = class extends think.Service {
   }
 
   getSignature(params) {
-    const text = Object.keys(params).sort().map(k => k + '=' + parmas[k]).join('&');
+    const text = Object.keys(params).sort().map(k => k + '=' + params[k]).join('&');
     return crypto.createHash('sha1').update(text).digest('hex');
   }
 
