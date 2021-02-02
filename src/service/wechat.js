@@ -56,15 +56,12 @@ module.exports = class extends think.Service {
     return ticket;
   }
 
-  getNonceString(length = 16) {
-    const randomString='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST0123456789';
-    return Array.from({length}, _ => 
-      randomString[ Math.ceil(Math.random() * randomString.length) ]
-    ).join('');
+  getNonceString() {
+    return Math.random().toString(36).substr(2, 15);
   }
 
-  getSignature({noncestr, url, jsapi_ticket, timestamp}) {
-    const text = `jsapi_ticket=${jsapi_ticket}&noncestr=${noncestr}&timestamp=${timestamp}&url=${url}`;
+  getSignature(params) {
+    const text = Object.keys(params).sort().map(k => k + '=' + parmas[k]).join('&');
     return crypto.createHash('sha1').update(text).digest('hex');
   }
 
@@ -72,7 +69,7 @@ module.exports = class extends think.Service {
     const accessToken = await this.getAccessToken();
     const ticket = await this.getTicket(accessToken);
     const noncestr = this.getNonceString();
-    const timestamp = Math.ceil(Date.now() / 1000);
+    const timestamp = parseInt(new Date().getTime() / 1000) + '';
     
     const signature = this.getSignature({
       noncestr,
