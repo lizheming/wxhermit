@@ -1,0 +1,11 @@
+version: '3'
+
+services: 
+  wechat:
+    image: lizheming/wxshare
+    ports:
+    - 8360:8360
+    environment: 
+      WECHAT_ID: wechat_appid
+      WECHAT_SECRET: wechat_appsecret
+      ALLOW_HOST_LIST: imnerd.org,eming.li
