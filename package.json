@@ -9,19 +9,19 @@
     "lint-fix": "eslint --fix src/"
   },
   "dependencies": {
-    "think-cache": "^1.0.0",
-    "think-cache-file": "^1.0.8",
-    "think-fetch": "^1.1.2",
-    "think-logger3": "^1.0.0",
-    "think-view": "^1.0.12",
-    "think-view-nunjucks": "^1.0.10",
-    "thinkjs": "^3.0.0"
+    "think-cache": "1.1.1",
+    "think-cache-file": "1.1.1",
+    "think-fetch": "1.1.2",
+    "think-logger3": "1.2.0",
+    "think-view": "1.0.12",
+    "think-view-nunjucks": "1.0.10",
+    "thinkjs": "3.2.13"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
-    "eslint": "^4.2.0",
-    "eslint-config-think": "^1.0.0",
-    "think-watcher": "^3.0.0"
+    "dotenv": "8.2.0",
+    "eslint": "4.19.1",
+    "eslint-config-think": "1.0.3",
+    "think-watcher": "3.0.4"
   },
   "repository": "",
   "license": "MIT",
