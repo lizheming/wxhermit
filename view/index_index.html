@@ -16,24 +16,46 @@
   </style>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
   <script>
-    wx.config({{config|dump|safe}});
-    window.addEventListener('message', function(event) {
-      if(!/^https?:\/\/{{host}}$/i.test(event.origin)) {
-        return;
-      }
-      if(event.data.type !== 'wxshare') {
-        return;
-      }
-      wx.updateAppMessageShareData({ 
-        title: event.data.title,
-        desc: event.data.desc,
-        imgUrl: event.data.imgUrl,
-        link: '{{url}}'
+    var url = location.href.split('#')[0];
+    var configPromise = fetch('/config?url=' + encodeURIComponent(url)).then(function(res) { 
+      return res.json(); 
+    }).then(function(config) {
+      return wx.config(config);
+    });
+
+    var listenPromise = new Promise(function(resolve, reject) {
+      var timeout = setTimeout(reject, 5000);
+      window.addEventListener('message', function(event) {
+        if(!/^https?:\/\/{{host}}$/i.test(event.origin)) {
+          return;
+        }
+        if(event.data.type !== 'wxshare') {
+          return;
+        }
+        resolve(event.data);
+        clearTimeout(timeout);
       });
+    });
+
+    Promise.all([configPromise, listenPromise]).then(function(resp) {
+      var title = resp[1].title;
+      var desc = resp[1].desc;
+      var imgUrl = resp[1].imgUrl;
+      if(!title) {
+        return;
+      }
+      
+      wx.updateAppMessageShareData({ 
+        title: title,
+        desc: desc,
+        imgUrl: imgUrl,
+        link: url
+      });
+
       wx.updateTimelineShareData({ 
-        title: event.data.title,
-        imgUrl: event.data.imgUrl,
-        link: '{{url}}'
+        title: title,
+        imgUrl: imgUrl,
+        link: url
       });
     });
   </script>
