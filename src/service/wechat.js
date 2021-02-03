@@ -79,18 +79,14 @@ module.exports = class extends think.Service {
     });
 
     return {
+      debug: true,
       appId: process.env.WECHAT_ID,
       timestamp,
       nonceStr: noncestr,
       signature,
       jsApiList: [
         'updateAppMessageShareData',
-        'updateTimelineShareData',
-        'onMenuShareTimeline',
-        'onMenuShareAppMessage',
-        'onMenuShareQQ',
-        'onMenuShareWeibo',
-        'onMenuShareQZone'
+        'updateTimelineShareData'
       ]
     };
   }

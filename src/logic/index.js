@@ -1,9 +1,11 @@
-const {parse} = require('url');
-
 module.exports = class extends think.Logic {
   indexAction() {
     const {url} = this.get();
     const {userAgent} = this.ctx;
+    if(!url) {
+      return this.fail(500, 'url not set!');
+    }
+
     if(!/micromessenger/i.test(userAgent)) {
       return this.redirect(url);
     }
