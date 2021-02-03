@@ -46,7 +46,7 @@ wxhermit 是基于 `<iframe>` 方式解决多域名、无法备案域名微信�
     <script>
     if (window.parent !== window) {
       window.parent.postMessage({ 
-        type: 'wxshare',
+        type: 'wxhermit',
         title: '自定义分享的标题',
         desc: '自定义分享的描述',
         imgUrl: '自定义分享的封面图'
@@ -64,3 +64,11 @@ wxhermit 是基于 `<iframe>` 方式解决多域名、无法备案域名微信�
 由于微信分享需要提供已认证公众号并绑定已备案域名，一个已认证公众号只能绑定至多 5 个安全域名，条件颇为苛刻。针对5个以上的域名，部分域名无法备案的情况，要自定义微信分享的文案就非常麻烦。本方案比较好的迂回解决该问题。
 
 不过缺点是分享页打开顶部显示的域名使用都是一个域名，所以不建议在 2C 的生产环境中使用。
+
+## 示例
+
+<https://wechat.75.team/?url=https://imnerd.org>
+
+## License
+
+[MIT](https://github.com/lizheming/wxhermit/blob/master/LICENSE)

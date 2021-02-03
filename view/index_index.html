@@ -29,7 +29,7 @@
         if(!/^https?:\/\/{{host}}$/i.test(event.origin)) {
           return;
         }
-        if(event.data.type !== 'wxshare') {
+        if(event.data.type !== 'wxhermit') {
           return;
         }
         resolve(event.data);
