@@ -15,6 +15,7 @@
     }
   </style>
   <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch%2CPromise"></script>
   <script>
     var url = location.href.split('#')[0];
     var configPromise = fetch('/config?url=' + encodeURIComponent(url)).then(function(res) { 
